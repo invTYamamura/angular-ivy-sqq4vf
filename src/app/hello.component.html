@@ -1,1 +1,6 @@
-<h1 style="text-align: center; font-size: 350px;">{{ counter }}</h1>
+<button id="btnStop" (click)="viewUserClick()">viewUser</button>
+<!-- <h1 style="text-align: center; font-size: 350px;">{{ counter }}</h1> -->
+<div *ngFor="let user of users">
+  <label>{{ user.id }}</label>
+  <label>{{ user.name }}</label>
+</div>

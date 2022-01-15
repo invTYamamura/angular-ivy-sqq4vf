@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { fromEvent, interval, switchMap } from 'rxjs';
+// import { ActivatedRoute, Router } from '@angular/router';
+import { fromEvent, Observable, switchMap } from 'rxjs';
+
+import { UserHttpService } from './userhttp.service';
+import { User } from './user';
 
 @Component({
   selector: 'hello-component',
@@ -7,12 +11,19 @@ import { fromEvent, interval, switchMap } from 'rxjs';
   styleUrls: ['./hello.component.css'],
 })
 export class HelloComponent implements OnInit {
-  title = 'contents';
-  public counter = 0;
+  users: User[];
 
+  constructor(private service: UserHttpService) {}
   ngOnInit() {
-    // fromEvent(document, 'click')
-    //   .pipe(switchMap(() => interval(100)))
-    //   .subscribe((val) => (this.counter = val));
+    console.log(`hello.component.ts.ngOnInit ->: fetchUserStart`);
+    this.service.fetchUser();
+    console.log(`hello.component.ts.ngOnInit ->: fetchUserEnd`);
+  }
+  viewUserClick() {
+    console.log(`hello.component.ts.viewUserClick ->: getUserStart`);
+    this.service.getUser().subscribe((v) => {
+      this.users.push(v);
+    });
+    console.log(`hello.component.ts.viewUserClick ->: getUserEnd`);
   }
 }
