@@ -1,6 +1,12 @@
 <button id="btnStop" (click)="viewUserClick()">viewUser</button>
 <!-- <h1 style="text-align: center; font-size: 350px;">{{ counter }}</h1> -->
 <div *ngFor="let user of users">
-  <label>{{ user.id }}</label>
-  <label>{{ user.name }}</label>
+  <label>{{ user.publishingOffice }}</label
+  ><br />
+  <label>{{ user.reportDatetime }}</label
+  ><br />
+  <label>{{ user.headTitle }}</label
+  ><br />
+  <label>{{ user.text }}</label
+  ><br />
 </div>

@@ -11,7 +11,7 @@ import { User } from './user';
   styleUrls: ['./hello.component.css'],
 })
 export class HelloComponent implements OnInit {
-  users: User[];
+  users = new Array<User>();
 
   constructor(private service: UserHttpService) {}
   ngOnInit() {
@@ -20,8 +20,10 @@ export class HelloComponent implements OnInit {
     console.log(`hello.component.ts.ngOnInit ->: fetchUserEnd`);
   }
   viewUserClick() {
+    this.users = new Array<User>();
     console.log(`hello.component.ts.viewUserClick ->: getUserStart`);
     this.service.getUser().subscribe((v) => {
+      console.log(v);
       this.users.push(v);
     });
     console.log(`hello.component.ts.viewUserClick ->: getUserEnd`);
